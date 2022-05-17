@@ -50,6 +50,14 @@ There are several handy tools that help explore APIs and test to make sure you'r
  - [Hoppscotch](https://hoppscotch.io/) — web-based, free version of Postman.
  - [cURL](https://en.wikipedia.org/wiki/CURL) — a command-line tool; developed by a single developer, but so widely used and installed that it's almost an official standard at this point.
 
+## Beware of CORS
+
+By default, Rails restricts requests from other websites (although cURL, Postman, [http.rb](https://github.com/httprb/http), native apps, and any other non-web browser won't suffer from this issue). So if you're `.fetch`ing from JavaScript within a browser, you need to allow-list the domains — or just let them all through.
+
+This gem is helpful:
+
+https://github.com/cyu/rack-cors
+
 ## Endpoints for sign-up/sign-in
 
 Devise will provide these JSON endpoints out-of-the-box at the same URLs that we're familiar with for HTML:
