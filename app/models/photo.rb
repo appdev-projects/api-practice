@@ -14,4 +14,12 @@ class Photo < ApplicationRecord
   has_many   :followers,
     through: :owner,
     source: :followers
+
+  def howdy
+    return "hiya!"
+  end
+
+  def liked_by(user)
+    Like.where(photo: self, user: user).exists?
+  end
 end

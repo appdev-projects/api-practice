@@ -3,7 +3,23 @@ class PhotosController < ApplicationController
 
   # GET /photos or /photos.json
   def index
-    @photos = Photo.all
+    @photos = Photo.eager_load(:owner, { likes: :fan }, { comments: :author })
+
+    respond_to do |format|
+      format.html
+
+      format.json do
+        render json: @photos.as_json(
+          only: [:id, :image],
+          include: {
+            owner: {},
+            likes: { include: :fan },
+            comments: { include: :author }
+          },
+          methods: [:howdy]
+        )
+      end
+    end
   end
 
   # GET /photos/1 or /photos/1.json
