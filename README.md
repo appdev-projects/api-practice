@@ -52,7 +52,7 @@ There are several handy tools that help explore APIs and test to make sure you'r
 
 ## Beware of CORS
 
-By default, Rails restricts requests from other websites (although cURL, Postman, [http.rb](https://github.com/httprb/http), native apps, and any other non-web browser won't suffer from this issue). So if you're `.fetch`ing from JavaScript within a browser, you need to allow-list the domains — or just let them all through.
+By default, Rails restricts requests from other websites (although cURL, Postman, [http.rb](https://github.com/httprb/http), native apps, and any other non-web browser won't suffer from this issue). So if you're `.fetch`ing from JavaScript within a browser, you need to allow-list the domains — or just let them all through. This is known as defining your Cross-Origin Resource Sharing policy.
 
 This gem is helpful:
 
