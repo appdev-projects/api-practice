@@ -8,17 +8,17 @@ class PhotosController < ApplicationController
     respond_to do |format|
       format.html
 
-      format.json do
-        render json: @photos.as_json(
-          only: [:id, :image],
-          include: {
-            owner: {},
-            likes: { include: :fan },
-            comments: { include: :author }
-          },
-          methods: [:howdy]
-        )
-      end
+      format.json # do
+        # render json: @photos.as_json(
+        #   only: [:id, :image],
+        #   include: {
+        #     owner: {},
+        #     likes: { include: :fan },
+        #     comments: { include: :author }
+        #   },
+        #   methods: [:howdy]
+        # )
+      # end
     end
   end
 
