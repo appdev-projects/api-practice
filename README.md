@@ -2,7 +2,11 @@
 
 ## Starting point
 
+### Template
+
 This project was freshly created using [the `vanilla-rails` template](https://github.com/appdev-projects/vanilla-rails).
+
+### Scaffolds
 
 Then, I added the Devise gem and ran the following generators:
 
@@ -26,9 +30,17 @@ rails g scaffold follow_request sender:references recipient:references
 rails g scaffold comment body:string author:references photo:references
 ```
 
+### Sample data => `dev:prime`
+
 I also added a sample data task. I called it `dev:prime` rather than our usual `sample_data`, following the convention of [thoughtbot](https://thoughtbot.com/blog/priming-the-pump).
 
-That's it!
+### Rubocop for code style
+
+I also added the [StandardRB gem](https://www.fastruby.io/blog/ruby/code-quality/how-we-use-rubocop-and-standardrb.html) and ran `rubocop -A` to give myself nicely consistent code styling. The linked blog post doesn't mention that you need to make [this change](https://github.com/firstdraft/rails_application_template/blob/821c0c25cd13775eff33401f76192d8bcfba73f1/template.rb#L143) in `bin/bundle` in order for things to work after running `rubocop -A` for the first time (otherwise all of your `bundle` commands will break).
+
+---
+
+That's it for the starter code!
 
 ## Tools for API development
 

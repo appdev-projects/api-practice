@@ -1,19 +1,18 @@
 namespace :dev do
   desc "Pre-populate database with sample data"
   task prime: :environment do
-
     if Rails.env.production?
       ActiveRecord::Base.connection.tables.each do |t|
         ActiveRecord::Base.connection.reset_pk_sequence!(t)
       end
     end
-  
+
     FollowRequest.destroy_all
     Like.destroy_all
     Comment.destroy_all
     Photo.destroy_all
     User.destroy_all
-  
+
     users = [
       {id: 81, username: "galen", email: "galen@example.com", created_at: "2015-01-19 09:24:34", updated_at: "2019-10-08 10:25:00"},
       {id: 82, username: "trina", email: "trina@example.com", created_at: "2014-09-02 06:05:56", updated_at: "2019-10-08 10:25:00"},
@@ -57,7 +56,7 @@ namespace :dev do
       {id: 120, username: "elmer", email: "elmer@example.com", created_at: "2017-11-24 23:32:54", updated_at: "2019-10-08 10:25:00"}
     ]
     User.insert_all!(users)
-  
+
     if User.method_defined?(:password) || User.has_attribute?(:password_digest)
       User.all.each do |user|
         user.password = "password"
@@ -67,7 +66,7 @@ namespace :dev do
     else
       puts "No password column found. Didn't add passwords."
     end
-  
+
     follow_requests = [
       {id: 1608, sender_id: 114, recipient_id: 81, created_at: "2015-04-24 01:26:47", updated_at: "2019-10-08 10:25:00"},
       {id: 1609, sender_id: 118, recipient_id: 81, created_at: "2018-03-20 11:34:16", updated_at: "2019-10-08 10:25:00"},
@@ -865,8 +864,8 @@ namespace :dev do
       {id: 2401, sender_id: 99, recipient_id: 120, created_at: "2018-09-01 00:01:41", updated_at: "2019-10-08 10:25:00"},
       {id: 2402, sender_id: 104, recipient_id: 120, created_at: "2018-10-24 17:24:38", updated_at: "2019-10-08 10:25:00"}
     ]
-    
-        photo_urls = [
+
+    photo_urls = [
       "http://res-2.cloudinary.com/initialversion/image/upload/v1637520519/hohzjnd7tu3jpgnbhcr2.jpg",
       "http://res-2.cloudinary.com/initialversion/image/upload/v1637520508/gqfu7m7zemahcwrfslcy.jpg",
       "http://res-1.cloudinary.com/initialversion/image/upload/v1637520492/i6qlsa0snpjcrdtsqiry.jpg",
@@ -1228,7 +1227,7 @@ namespace :dev do
 
     FollowRequest.insert_all!(follow_requests)
     p "follow requests added"
-    
+
     comments = [
       {id: 2730, photo_id: 628, body: "There was never a genius without a tincture of madness.", author_id: 96, created_at: "2019-03-19 03:56:09", updated_at: "2019-10-08 10:25:00"},
       {id: 2731, photo_id: 628, body: "It's not what happens to you, but how you react to it that matters.", author_id: 115, created_at: "2018-07-20 04:14:14", updated_at: "2019-10-08 10:25:00"},
@@ -2794,10 +2793,9 @@ namespace :dev do
       {id: 4291, photo_id: 951, body: "Try to copy the JBOD array, maybe it will compress the multi-byte bus!", author_id: 118, created_at: "2018-11-11 12:16:00", updated_at: "2019-10-08 10:25:00"},
       {id: 4292, photo_id: 951, body: "Use the virtual SCSI monitor, then you can connect the optical system!", author_id: 118, created_at: "2018-11-11 12:16:00", updated_at: "2019-10-08 10:25:00"}
     ]
-    
+
     Comment.insert_all!(comments)
     p "comments added"
-
 
     likes = [
       {id: 2759, fan_id: 99, photo_id: 628, created_at: "2018-09-12 15:52:43", updated_at: "2019-10-08 10:25:00"},
@@ -4269,7 +4267,7 @@ namespace :dev do
     ]
     Like.insert_all!(likes)
     p "likes"
-  
+
     puts "Generated Sample Data"
   end
 end
