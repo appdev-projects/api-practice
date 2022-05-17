@@ -20,6 +20,6 @@ class Photo < ApplicationRecord
   end
 
   def liked_by(user)
-    Like.where(photo: self, user: user).exists?
+    self.likes.where(fan: user).exists?
   end
 end
